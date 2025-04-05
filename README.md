@@ -1,4 +1,4 @@
-h1> Pick Rick </h1>
+h1>Pick Rick </h1>
 
 <h2>Description</h2>
 <img src="https://i.imgur.com/BTqwPda.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
