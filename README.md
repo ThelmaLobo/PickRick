@@ -130,23 +130,33 @@ For doing we need to provide the absolute path i.e. ls /home/rick. Here we can s
 <br />
 <br />
 <p align="center">
-To access the second ingredient file, we use less command as done previosuly. Here we found the sconf flag.  <br/>
+To access the second ingredient file, we use less command as done previosuly. Here we found the second flag.  <br/>
   
 <img src="https://i.imgur.com/hfI4R0M.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/kxXvBVK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
+Now we need to search for the third ingredient. For lets see we can find anything in /root directory. 
   
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/7v666F1.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
+So, we found one text file called 3rd.txt. Lets see what's inside using less command <br/>
   
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/m9XLkao.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/SMFbdXg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
+<p align="center">
+After giving sudo command i.e. we gave permissions for accessing the 3rd.txt file. We have captured the third ingredient as below <br/>
+  
+<img src="https://i.imgur.com/l6zYaqH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+The final output is as below -
+<img src="https://i.imgur.com/TOzgfnd.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
