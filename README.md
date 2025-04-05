@@ -46,81 +46,94 @@ We can see the comments in green. This seems to be username as per the given com
 <br />
 <br />
 <p align="center">
-To perform enumeration, we did directory bruteforcing. We will be trying common directory brute forcing names such as login, admin, secret, .htpaswd,robots.txt. We also use Gobuster tool for performing such brute forcing. One of the common file we know is robots.txt. As we can see there some information given that seems like it might a password. It will help while performing the SSH - <br/>
+To perform enumeration, we did directory bruteforcing. We will be trying common directory brute forcing names such as login, admin, secret, .htpaswd,robots.txt. We can also use Gobuster, dirb tools for performing such brute forcing. As we can after trying manual brute forcing, we got some information from /robots.txt. It does look like it can be a passwprd which we can use to do ssh. As we already know from our port scanning, that port 22 was open. We will have to keep trying until we find some page which lets enter the username or password where will should be able to find the flag. the login.php seemed to work.As we can see, it is asking us to enter the username and password - <br/>
   
 <img src="https://i.imgur.com/RbCWfff.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/YrcBCNQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/xhNvEPK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/8fArheI.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Wf9tEaB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
+After perfroming manual brute-forcing we managed to find the below page. 
+<img src="https://i.imgur.com/C0j7Ivt.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<br />
+<br />
+<p align="center">
+Here, we will be inputting the password discovered from the /robots.txt file and username discovered from web page as below <br/>
+  
+<img src="https://i.imgur.com/A4NThZI.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ViaD7sN.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+Here we can view several folders such as Commands, Potions, Creatures, Potions and Beth Clone Notes. We tried going into these folders but couldnt find anyhting that would help us find the flag. However, we just have the Command Prompt. One attack we can perform is doing Remote Code Execution : <br/>
+  
+<img src="https://i.imgur.com/8EXKJaJ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+We will do ls. After doing we can view some files : <br/>
+  
+<img src="https://i.imgur.com/1CbAmRt.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<br />
+<br />
+<p align="center">
+We used cat command. However, it is disabled. Now we need to think what other commands can be used to perform this task i.e. read the contents of the file. There are different types of commands such as head, tail. Let's try them one by one and see what happens! : <br/>
+<img src="https://i.imgur.com/jv2QZ0b.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/FsBCnw0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/u7AOUOh.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/7CgoCnZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+Those commands didnt work. After doing lot of google search. I came up with cat command alternatives and tried one command called the less command <br/>
+  
+<img src="https://i.imgur.com/43WAqK6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+After executing that command, we found the flag as below <br/>
+  
+<img src="https://i.imgur.com/E9zeDrc.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+We need to search for other ingredients (flags) therefore we can try doing that using the same less command for other .txt files as below: <br/>
+  
+<img src="https://i.imgur.com/LTRj0hm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/HOCdT6f.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<p align="center">
+As per the above message we need to search other file systems to search for another flag. <br/>
   
 <img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
+Let's check our pwd now. This is our html directory where we store our apache files. Whenever we get access to any Linux system, we are always into home directory. We also need to check the home directory for gaining the information of users. We found two directories such as rick and ubuntu. We are mostly interested in the rick directory <br/>
   
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/YXxMrxb.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/KADlmnT.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
+For doing we need to provide the absolute path i.e. ls /home/rick. Here we can see the name second ingredient. We need to see what is there inside this file.  <br/>
   
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/tikrFre.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/KjITjBg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 <br />
 <br />
 <p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
+To access the second ingredient file, we use less command as done previosuly. Here we found the sconf flag.  <br/>
   
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
-  
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
-  
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
-  
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
-  
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
-  
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<p align="center">
-Now let's begin. We need to do port scanning on the target machine. This will help us understand which ports, services are open. This can help us perform enumeration on them. There are multiple ways to do that like running scripts, using nmap which is one of the most essential steps to do. We will be using this command - 
-nmap -T5 -p- -vv -sV  10.10.165.99 -oA nmap: <br/>
-  
-<img src="https://i.imgur.com/V5Dxpri.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/hfI4R0M.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/kxXvBVK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <p align="center">
