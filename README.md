@@ -1,5 +1,7 @@
 <h2>Pickle Rick</h2>
 
+
+
 <h2>Description</h2>
 <img src="https://i.imgur.com/BTqwPda.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
@@ -18,6 +20,7 @@
 I am using the Try Hack Me VM to perform this CTF. Let's check the version of this machine as shown below. This is just for our information  : <br/>
   
 <img src="https://i.imgur.com/9PcZZPV.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 <br />
 <br />
 <p align="center">
